@@ -72,8 +72,17 @@ namespace PlatformerGame
         }
         private void GameTick(object sender, EventArgs e) // При каждом тике (кадре)
         {
-            // Передвигаемся вверх/вниз/влево/вправо на 2 (значение Speed)
+            // Размеры карты
+            double canvasWidth = GameScreen.ActualWidth;
+            double canvasHeight = GameScreen.ActualHeight;
 
+            // Размер + позиция игрока
+            double playerWidth = Player.Width;
+            double playerHeight = Player.Height;
+            double playerX = Canvas.GetLeft(Player);
+            double playerY = Canvas.GetTop(Player);
+
+            // Передвигаемся вверх/вниз/влево/вправо на 2 (значение Speed)
             if (UpKeyPressed) 
             {
                 SpeedY += Speed;
@@ -99,12 +108,62 @@ namespace PlatformerGame
                 Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\StandBack.png", UriKind.Absolute));
             }
 
-
             SpeedX *= Friction; // Уменьшаем скорость с учетом терния
             SpeedY *= Friction;
 
-            Canvas.SetLeft(Player, Canvas.GetLeft(Player) + SpeedX);
-            Canvas.SetTop(Player, Canvas.GetTop(Player) - SpeedY);
+            // Обновляем позицию игрока
+            playerX += SpeedX;
+            playerY -= SpeedY;
+
+            if (playerX < 0) // Игрок не вышел за пределы слева
+            {
+                playerX = 0; // Ставим 0, чтобы игрок не вышел за пределы
+            }
+            else if (playerX + playerWidth > canvasWidth) // Игрок не вышел за пределы справа
+            {
+                playerX = canvasWidth - playerWidth; // Ставим координаты края карты, чтобы игрок не вышел за пределы
+            }
+
+            if (playerY < 0) // Игрок не вышел за пределы сверху
+            {
+                playerY = 0;
+            }
+            else if (playerY + playerHeight > canvasHeight) // Игрок не вышел за пределы снизу
+            {
+                playerY = canvasHeight - playerHeight;
+            }
+
+            // Устанавливаем новые координаты игрока
+            Canvas.SetLeft(Player, playerX);
+            Collide("x");
+            Canvas.SetTop(Player, playerY);
+            Collide("y");
+        }
+
+        private void Collide(string dir)
+        {
+            foreach (var child in GameScreen.Children.OfType<Rectangle>())
+            {
+                if ((string)child.Tag == "Collide") // Объекты типа Collide(Колизия) 
+                {
+                    Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height);//Ищем игрока в канвасе
+                    Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height);//Ищем объект в канвасе
+                    if (PlayerHB.IntersectsWith(ToCollide)) //Условия контакта с объектом
+                    {
+                        switch (dir)
+                        {
+                            case "x":
+                                Canvas.SetLeft(Player, Canvas.GetLeft(Player) - SpeedX);
+                                SpeedX = 0;
+                                break;
+                            case "y":
+                                Canvas.SetTop(Player, Canvas.GetTop(Player) + SpeedY);
+                                SpeedY = 0;
+                                break;
+                        }
+                    }
+                }
+            }
         }
     }
 }
