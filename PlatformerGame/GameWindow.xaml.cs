@@ -70,6 +70,7 @@ namespace PlatformerGame
             GameTimer.Tick += GameTick;
             GameTimer.Start();
         }
+
         private void GameTick(object sender, EventArgs e)
         {
             if (UpKeyPressed)
@@ -93,7 +94,35 @@ namespace PlatformerGame
             SpeedY *= Friction;
 
             Canvas.SetLeft(Player, Canvas.GetLeft(Player) + SpeedX);
+            Collide("x");
             Canvas.SetTop(Player, Canvas.GetTop(Player) - SpeedY);
+            Collide("y"); 
+        }
+
+        private void Collide(string dir) 
+        {
+            foreach (var child in GameScreen.Children.OfType<Rectangle>()) 
+            {
+                if ((string)child.Tag == "Collide") 
+                {
+                    Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height);
+                    Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height);
+                    if (PlayerHB.IntersectsWith(ToCollide)) 
+                    {
+                        switch (dir) 
+                        {
+                            case "x":
+                                Canvas.SetLeft(Player, Canvas.GetLeft(Player) - SpeedX);
+                                SpeedX = 0;
+                                break;
+                            case "y":
+                                Canvas.SetTop(Player, Canvas.GetTop(Player) + SpeedY);
+                                SpeedY = 0;
+                                break;
+                        }
+                    }
+                }
+            }
         }
     }
 }
