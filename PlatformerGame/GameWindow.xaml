@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="GameWindow" Height="450" Width="800">
     <Grid>
-        
+        <Canvas x:Name="GameScreen" Focusable="True" KeyUp="KeyBoardUp" KeyDown="KeyBoardDown">
+            <Rectangle x:Name="Player" Canvas.Left="50" Canvas.Top="50" Fill="Red" Height="50" Width="50"></Rectangle>
+        </Canvas>
     </Grid>
 </Window>
