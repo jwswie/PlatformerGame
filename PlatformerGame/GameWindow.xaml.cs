@@ -76,20 +76,29 @@ namespace PlatformerGame
 
             if (UpKeyPressed) 
             {
-                SpeedY += Speed; 
+                SpeedY += Speed;
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoFront.png", UriKind.Absolute));
             }
-            if (DownKeyPressed) 
+            else if (DownKeyPressed) 
             {
                 SpeedY -= Speed;
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoBack.png", UriKind.Absolute));
             }
-            if (LeftKeyPressed) 
+            else if(LeftKeyPressed) 
             {
                 SpeedX += Speed;
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoRight.png", UriKind.Absolute));
             }
-            if (RightKeyPressed) 
+            else if(RightKeyPressed) 
             {
                 SpeedX -= Speed;
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoLeft.png", UriKind.Absolute));
             }
+            else 
+            {
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\StandBack.png", UriKind.Absolute));
+            }
+
 
             SpeedX *= Friction; // Уменьшаем скорость с учетом терния
             SpeedY *= Friction;
