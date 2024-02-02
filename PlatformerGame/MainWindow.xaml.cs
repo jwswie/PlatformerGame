@@ -24,5 +24,12 @@ namespace PlatformerGame
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GameWindow gameWindow = new GameWindow();
+            gameWindow.Show();
+            this.Close();
+        }
     }
 }
