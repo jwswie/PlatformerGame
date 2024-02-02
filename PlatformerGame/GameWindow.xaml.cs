@@ -20,11 +20,11 @@ namespace PlatformerGame
     /// </summary>
     public partial class GameWindow : Window
     {
-        private DispatcherTimer GameTimer = new DispatcherTimer();
+        private DispatcherTimer GameTimer = new DispatcherTimer(); // Таймер
         private bool UpKeyPressed, DownKeyPressed, LeftKeyPressed, RightKeyPressed;
         private float SpeedX, SpeedY, Friction = 0.88f, Speed = 2;
 
-        private void KeyBoardDown(object sender, KeyEventArgs e)
+        private void KeyBoardDown(object sender, KeyEventArgs e) // Клавиша нажата
         {
             switch (e.Key) 
             {
@@ -43,7 +43,7 @@ namespace PlatformerGame
             }
         }
 
-        private void KeyBoardUp(object sender, KeyEventArgs e)
+        private void KeyBoardUp(object sender, KeyEventArgs e) // Клавиша отпущена
         {
             switch (e.Key)
             {
@@ -68,29 +68,40 @@ namespace PlatformerGame
             GameScreen.Focus();
             GameTimer.Interval = TimeSpan.FromMilliseconds(16);
             GameTimer.Tick += GameTick;
-            GameTimer.Start();
+            GameTimer.Start(); // запускаем таймер
         }
-
-        private void GameTick(object sender, EventArgs e)
+        
+        private void GameTick(object sender, EventArgs e) // При каждом тике (кадре)
         {
-            if (UpKeyPressed)
+            // Передвигаемся вверх/вниз/влево/вправо на 2 (значение Speed)
+
+            if (UpKeyPressed) 
             {
                 SpeedY += Speed;
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoFront.png", UriKind.Absolute));
             }
-            if (DownKeyPressed) 
+            else if (DownKeyPressed) 
             {
                 SpeedY -= Speed;
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoBack.png", UriKind.Absolute));
             }
-            if (LeftKeyPressed) 
+            else if(LeftKeyPressed) 
             {
                 SpeedX += Speed;
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoRight.png", UriKind.Absolute));
             }
-            if (RightKeyPressed) 
+            else if(RightKeyPressed) 
             {
                 SpeedX -= Speed;
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoLeft.png", UriKind.Absolute));
+            }
+            else 
+            {
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\StandBack.png", UriKind.Absolute));
             }
 
-            SpeedX *= Friction;
+
+            SpeedX *= Friction; // Уменьшаем скорость с учетом терния
             SpeedY *= Friction;
 
             Canvas.SetLeft(Player, Canvas.GetLeft(Player) + SpeedX);

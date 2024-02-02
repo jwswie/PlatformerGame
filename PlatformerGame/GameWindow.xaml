@@ -8,8 +8,8 @@
         Title="GameWindow" Height="450" Width="800">
     <Grid>
         <Canvas x:Name="GameScreen" Focusable="True" KeyUp="KeyBoardUp" KeyDown="KeyBoardDown">
-            <Rectangle x:Name="Player" Tag="User" Canvas.Left="50" Canvas.Top="50" Fill="Red" Height="50" Width="50"/>
             <Rectangle Tag="Collide" Canvas.Left="300" Canvas.Top="50" Fill="Black" Height="50" Width="150"/>
+            <Image x:Name="Player" Tag="User" Canvas.Left="347" Canvas.Top="131" Source="C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\StandBack.png" Height="50" Width="50"/>
         </Canvas>
     </Grid>
 </Window>
