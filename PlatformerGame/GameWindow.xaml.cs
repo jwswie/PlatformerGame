@@ -103,11 +103,11 @@ namespace PlatformerGame
         {
             foreach (var child in GameScreen.Children.OfType<Rectangle>()) 
             {
-                if ((string)child.Tag == "Collide") 
+                if ((string)child.Tag == "Collide") // Объекты типа Collide(Колизия) 
                 {
-                    Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height);
-                    Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height);
-                    if (PlayerHB.IntersectsWith(ToCollide)) 
+                    Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height);//Ищем игрока в канвасе
+                    Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height);//Ищем объект в канвасе
+                    if (PlayerHB.IntersectsWith(ToCollide)) //Условия контакта с объектом
                     {
                         switch (dir) 
                         {
