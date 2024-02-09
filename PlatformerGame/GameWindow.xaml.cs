@@ -115,24 +115,6 @@ namespace PlatformerGame
             playerX += SpeedX;
             playerY -= SpeedY;
 
-            /*if (playerX < 0) // Игрок не вышел за пределы слева
-            {
-                playerX = 0; // Ставим 0, чтобы игрок не вышел за пределы
-            }
-            else if (playerX + playerWidth > canvasWidth) // Игрок не вышел за пределы справа
-            {
-                playerX = canvasWidth - playerWidth; // Ставим координаты края карты, чтобы игрок не вышел за пределы
-            }
-
-            if (playerY < 0) // Игрок не вышел за пределы сверху
-            {
-                playerY = 0;
-            }
-            else if (playerY + playerHeight > canvasHeight) // Игрок не вышел за пределы снизу
-            {
-                playerY = canvasHeight - playerHeight;
-            }*/
-
             // Устанавливаем новые координаты игрока
             Canvas.SetLeft(Player, playerX);
             Collide("x");
@@ -148,6 +130,7 @@ namespace PlatformerGame
                 {
                     Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height); // Ищем игрока в канвасе
                     Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height); // Ищем объект в канвасе
+                    string Name = child.Name;
 
                     if (PlayerHB.IntersectsWith(ToCollide)) // Условия контакта с объектом
                     {
@@ -162,6 +145,16 @@ namespace PlatformerGame
                                 SpeedY = 0;
                                 break;
                         }
+                    }
+                    if (PlayerHB.IntersectsWith(ToCollide) && Name == "Finish") // Условия контакта с объектом
+                    {
+                        
+                        MessageBox.Show("Finished level");
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        Close();
+                        GameTimer.Stop();
+                        break;
                     }
                 }
             }

@@ -27,7 +27,9 @@
             <Rectangle Tag="Collide" Fill="Black" Height="30" Width="108" Canvas.Top="224" Canvas.Left="4"/>
             <Rectangle Tag="Collide" Fill="Black" Height="106" Width="30" Canvas.Left="107" Canvas.Top="224"/>
 
+            <Rectangle Tag="Collide" Fill="Black" Height="1" Width="87" Canvas.Left="680" Canvas.Top="418"/>
             <Image x:Name="Player" Canvas.Left="697" Canvas.Top="359" Source="C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\StandBack.png" Height="50" Width="50"/>
+            <Rectangle x:Name="Finish" Tag="Collide" Fill="Black" Height="1" Width="87" Canvas.Left="26" Canvas.Top="0"/>
         </Canvas>
     </Grid>
 </Window>
