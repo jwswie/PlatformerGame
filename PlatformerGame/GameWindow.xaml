@@ -12,7 +12,6 @@
             <Rectangle Tag="Collide" Fill="Black" Height="25" Width="680" Canvas.Left="112" Canvas.Top="0"/>
             <Rectangle Tag="Collide" Fill="Black" Height="419" Width="25" Canvas.Left="767" Canvas.Top="0"/>
             <Rectangle Tag="Collide" Fill="Black" Height="30" Width="680" Canvas.Left="0" Canvas.Top="390"/>
-            <Image x:Name="Player" Canvas.Left="697" Canvas.Top="359" Source="C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\StandBack.png" Height="50" Width="50"/>
             <Rectangle Tag="Collide" Fill="Black" Height="30" Width="166" Canvas.Left="602" Canvas.Top="268"/>
             <Rectangle Tag="Collide" Fill="Black" Height="30" Width="108" Canvas.Left="660" Canvas.Top="100"/>
             <Rectangle Tag="Collide" Fill="Black" Height="106" Width="30" Canvas.Left="660" Canvas.Top="102"/>
@@ -27,6 +26,8 @@
             <Rectangle Tag="Collide" Fill="Black" Height="30" Width="108" Canvas.Left="108" Canvas.Top="130"/>
             <Rectangle Tag="Collide" Fill="Black" Height="30" Width="108" Canvas.Top="224" Canvas.Left="4"/>
             <Rectangle Tag="Collide" Fill="Black" Height="106" Width="30" Canvas.Left="107" Canvas.Top="224"/>
+
+            <Image x:Name="Player" Canvas.Left="697" Canvas.Top="359" Source="C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\StandBack.png" Height="50" Width="50"/>
         </Canvas>
     </Grid>
 </Window>
