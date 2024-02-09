@@ -1,4 +1,4 @@
-﻿<Window x:Class="PlatformerGame.GameWindow"
+<Window x:Class="PlatformerGame.GameWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,8 +8,28 @@
         Title="GameWindow" Height="450" Width="800">
     <Grid>
         <Canvas x:Name="GameScreen" Focusable="True" KeyUp="KeyBoardUp" KeyDown="KeyBoardDown">
-            <Rectangle Tag="Collide" Canvas.Left="300" Canvas.Top="50" Fill="Black" Height="50" Width="150"/>
-            <Image x:Name="Player" Tag="User" Canvas.Left="347" Canvas.Top="131" Source="C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\StandBack.png" Height="50" Width="50"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="419" Width="26" Canvas.Top="0" Canvas.Left="0"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="25" Width="680" Canvas.Left="112" Canvas.Top="0"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="419" Width="25" Canvas.Left="767" Canvas.Top="0"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="30" Width="680" Canvas.Left="0" Canvas.Top="390"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="30" Width="166" Canvas.Left="602" Canvas.Top="268"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="30" Width="108" Canvas.Left="660" Canvas.Top="100"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="106" Width="30" Canvas.Left="660" Canvas.Top="102"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="30" Width="208" Canvas.Left="389" Canvas.Top="81"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="72" Width="30" Canvas.Left="389" Canvas.Top="96"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="127" Width="30" Canvas.Left="482" Canvas.Top="97"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="30" Width="226" Canvas.Left="286" Canvas.Top="220"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="106" Width="30" Canvas.Left="286" Canvas.Top="118"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="106" Width="30" Canvas.Left="186" Canvas.Top="24"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="84" Width="30" Canvas.Left="427" Canvas.Top="306"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="30" Width="166" Canvas.Left="263" Canvas.Top="306"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="30" Width="108" Canvas.Left="108" Canvas.Top="130"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="30" Width="108" Canvas.Top="224" Canvas.Left="4"/>
+            <Rectangle Tag="Collide" Fill="Black" Height="106" Width="30" Canvas.Left="107" Canvas.Top="224"/>
+
+            <Rectangle Tag="Collide" Fill="Black" Height="1" Width="87" Canvas.Left="680" Canvas.Top="418"/>
+            <Image x:Name="Player" Canvas.Left="697" Canvas.Top="359" Source="StandBack.png" Height="50" Width="50"/>
+            <Rectangle x:Name="Finish" Tag="Collide" Fill="Black" Height="1" Width="87" Canvas.Left="26" Canvas.Top="0"/>
         </Canvas>
     </Grid>
 </Window>
