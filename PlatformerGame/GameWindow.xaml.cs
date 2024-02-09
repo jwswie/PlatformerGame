@@ -70,6 +70,7 @@ namespace PlatformerGame
             GameTimer.Tick += GameTick;
             GameTimer.Start(); // запускаем таймер
         }
+        
         private void GameTick(object sender, EventArgs e) // При каждом тике (кадре)
         {
             // Размеры карты
@@ -122,19 +123,17 @@ namespace PlatformerGame
             Collide("y");
         }
 
-        private void Collide(string dir)
+        private void Collide(string dir) 
         {
-            foreach (var child in GameScreen.Children.OfType<Rectangle>())
+            foreach (var child in GameScreen.Children.OfType<Rectangle>()) 
             {
-                if ((string)child.Tag == "Collide") // Объекты типа Collide (Колизия) 
+                if ((string)child.Tag == "Collide") // Объекты типа Collide(Колизия) 
                 {
-                    Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height); // Ищем игрока в канвасе
-                    Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height); // Ищем объект в канвасе
-                    string Name = child.Name;
-
-                    if (PlayerHB.IntersectsWith(ToCollide)) // Условия контакта с объектом
+                    Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height);//Ищем игрока в канвасе
+                    Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height);//Ищем объект в канвасе
+                    if (PlayerHB.IntersectsWith(ToCollide)) //Условия контакта с объектом
                     {
-                        switch (dir)
+                        switch (dir) 
                         {
                             case "x":
                                 Canvas.SetLeft(Player, Canvas.GetLeft(Player) - SpeedX);
@@ -146,6 +145,7 @@ namespace PlatformerGame
                                 break;
                         }
                     }
+
                     if (PlayerHB.IntersectsWith(ToCollide) && Name == "Finish") // Условия контакта с объектом
                     {
                         
