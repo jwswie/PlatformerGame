@@ -129,8 +129,11 @@ namespace PlatformerGame
             {
                 if ((string)child.Tag == "Collide") // Объекты типа Collide(Колизия) 
                 {
-                    Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height);//Ищем игрока в канвасе
-                    Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height);//Ищем объект в канвасе
+                    Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height); //Ищем игрока в канвасе
+                    Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height); //Ищем объект в канвасе
+
+                    string Name = child.Name;
+
                     if (PlayerHB.IntersectsWith(ToCollide)) //Условия контакта с объектом
                     {
                         switch (dir) 

@@ -25,11 +25,21 @@ namespace PlatformerGame
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             GameWindow gameWindow = new GameWindow();
             gameWindow.Show();
             this.Close();
+        }
+
+        private void LevelsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Здесь должен быть код для отображения уровней игры или приложения.
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

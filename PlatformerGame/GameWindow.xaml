@@ -29,7 +29,7 @@
 
             <Rectangle Tag="Collide" Fill="Black" Height="1" Width="87" Canvas.Left="680" Canvas.Top="418"/>
             <Image x:Name="Player" Canvas.Left="697" Canvas.Top="359" Source="StandBack.png" Height="50" Width="50"/>
-            <Rectangle x:Name="Finish" Tag="Collide" Fill="Black" Height="1" Width="87" Canvas.Left="26" Canvas.Top="0"/>
+            <Rectangle x:Name="Finish" Tag="Collide" Fill="Black" Height="2" Width="87" Canvas.Left="26" Canvas.Top="0"/>
         </Canvas>
     </Grid>
 </Window>
