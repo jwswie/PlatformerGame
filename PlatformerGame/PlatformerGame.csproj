@@ -101,5 +101,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\brick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GoBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GoFront.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GoLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GoRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StandBack.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

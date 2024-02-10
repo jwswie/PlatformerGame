@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -22,17 +23,18 @@ namespace PlatformerGame
     {
         private DispatcherTimer GameTimer = new DispatcherTimer(); // Таймер
         private bool UpKeyPressed, DownKeyPressed, LeftKeyPressed, RightKeyPressed;
-        private float SpeedX, SpeedY, Friction = 0.88f, Speed = 2;
-
+        private float SpeedX, SpeedY, Friction = 0.88f, Speed = 2f;
+        bool GameEnd = false;
+        #region move player
         private void KeyBoardDown(object sender, KeyEventArgs e) // Клавиша нажата
         {
-            switch (e.Key) 
+            switch (e.Key)
             {
                 case Key.W:
                     UpKeyPressed = true;
                     break;
-                case Key.S: 
-                    DownKeyPressed = true; 
+                case Key.S:
+                    DownKeyPressed = true;
                     break;
                 case Key.D:
                     LeftKeyPressed = true;
@@ -61,43 +63,52 @@ namespace PlatformerGame
                     break;
             }
         }
+        #endregion
 
         public GameWindow()
         {
             InitializeComponent();
-            GameScreen.Focus();
-            GameTimer.Interval = TimeSpan.FromMilliseconds(16);
+            GameScreen.Height = 1000;
+            GameScreen.Width = 1000;
+            CanvasViewer.Height = 500;
+            CanvasViewer.Width = 500;
+            CanvasViewer.Focus();
+            UpdateCamera();
+            GameTimer.Interval = TimeSpan.FromMilliseconds(20);
             GameTimer.Tick += GameTick;
             GameTimer.Start(); // запускаем таймер
         }
-        
+
+
+
         private void GameTick(object sender, EventArgs e) // При каждом тике (кадре)
         {
             // Передвигаемся вверх/вниз/влево/вправо на 2 (значение Speed)
 
-            if (UpKeyPressed) 
+            if (UpKeyPressed)
             {
                 SpeedY += Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoFront.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\Desik\\source\\repos\\PlatformerGame\\PlatformerGame\\Resources\\GoFront.png", UriKind.Absolute));
             }
-            else if (DownKeyPressed) 
+            else if (DownKeyPressed)
             {
                 SpeedY -= Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoBack.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\Desik\\source\\repos\\PlatformerGame\\PlatformerGame\\Resources\\GoBack.png", UriKind.Absolute));
             }
-            else if(LeftKeyPressed) 
+            else if (LeftKeyPressed)
             {
                 SpeedX += Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoRight.png", UriKind.Absolute));
+
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\Desik\\source\\repos\\PlatformerGame\\PlatformerGame\\Resources\\GoRight.png", UriKind.Absolute));
             }
-            else if(RightKeyPressed) 
+            else if (RightKeyPressed)
             {
                 SpeedX -= Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoLeft.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\Desik\\source\\repos\\PlatformerGame\\PlatformerGame\\Resources\\GoLeft.png", UriKind.Absolute));
             }
-            else 
+            else
             {
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\StandBack.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("C:\\Users\\Desik\\source\\repos\\PlatformerGame\\PlatformerGame\\Resources\\StandBack.png", UriKind.Absolute));
             }
 
 
@@ -107,12 +118,26 @@ namespace PlatformerGame
             Canvas.SetLeft(Player, Canvas.GetLeft(Player) + SpeedX);
             Collide("x");
             Canvas.SetTop(Player, Canvas.GetTop(Player) - SpeedY);
-            Collide("y"); 
+            Collide("y");
+            UpdateCamera();
         }
 
-        private void Collide(string dir) 
+        #region Camera
+        private void UpdateCamera()
         {
-            foreach (var child in GameScreen.Children.OfType<Rectangle>()) 
+            // calculate offset of scrollViewer, relative to actual position of the player
+            double offsetX = Canvas.GetLeft(Player) / 1.3;
+            double offsetY = Canvas.GetTop(Player) / 1.3;
+            // move the "camera"
+            CanvasViewer.ScrollToHorizontalOffset(offsetX);
+            CanvasViewer.ScrollToVerticalOffset(offsetY);
+        }
+        #endregion
+
+        #region Collision
+        private void Collide(string dir)
+        {
+            foreach (var child in GameScreen.Children.OfType<Image>())
             {
                 if ((string)child.Tag == "Collide") // Объекты типа Collide(Колизия) 
                 {
@@ -120,7 +145,7 @@ namespace PlatformerGame
                     Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height);//Ищем объект в канвасе
                     if (PlayerHB.IntersectsWith(ToCollide)) //Условия контакта с объектом
                     {
-                        switch (dir) 
+                        switch (dir)
                         {
                             case "x":
                                 Canvas.SetLeft(Player, Canvas.GetLeft(Player) - SpeedX);
@@ -135,5 +160,6 @@ namespace PlatformerGame
                 }
             }
         }
+        #endregion
     }
 }
