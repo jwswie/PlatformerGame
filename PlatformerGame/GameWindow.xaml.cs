@@ -137,8 +137,6 @@ namespace PlatformerGame
             // move the "camera"
             CanvasViewer.ScrollToHorizontalOffset(offsetX);
             CanvasViewer.ScrollToVerticalOffset(offsetY);
-            Canvas.SetTop(Player, playerY);
-            Collide("y");
         }
         #endregion
 
