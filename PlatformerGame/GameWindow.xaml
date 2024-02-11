@@ -26,10 +26,15 @@
             <Rectangle Tag="Collide" Fill="Black" Height="30" Width="108" Canvas.Left="108" Canvas.Top="130"/>
             <Rectangle Tag="Collide" Fill="Black" Height="30" Width="108" Canvas.Top="224" Canvas.Left="4"/>
             <Rectangle Tag="Collide" Fill="Black" Height="106" Width="30" Canvas.Left="107" Canvas.Top="224"/>
+            <Image Tag="Coin" Height="47" Width="72" Canvas.Left="31" Canvas.Bottom="10" Canvas.Top="257" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Resources/CoinImage.png"/>
 
             <Rectangle Tag="Collide" Fill="Black" Height="1" Width="87" Canvas.Left="680" Canvas.Top="418"/>
             <Image x:Name="Player" Canvas.Left="697" Canvas.Top="359" Source="StandBack.png" Height="50" Width="50"/>
             <Rectangle x:Name="Finish" Tag="Collide" Fill="Black" Height="2" Width="87" Canvas.Left="26" Canvas.Top="0"/>
+            <Image Tag="Coin" Height="47" Width="72" Canvas.Left="416" Canvas.Bottom="10" Canvas.Top="111" Source="/Resources/CoinImage.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image Tag="Coin" Height="47" Width="72" Canvas.Left="358" Canvas.Bottom="10" Canvas.Top="336" Source="/Resources/CoinImage.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image Tag="Coin" Height="47" Width="72" Canvas.Left="695" Canvas.Bottom="10" Canvas.Top="130" Source="/Resources/CoinImage.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image Tag="Coin" Height="47" Width="72" Canvas.Left="692" Canvas.Bottom="10" Canvas.Top="30" Source="/Resources/CoinImage.png" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Canvas>
     </Grid>
 </Window>
