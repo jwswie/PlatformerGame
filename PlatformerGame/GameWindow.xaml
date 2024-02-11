@@ -5,9 +5,227 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlatformerGame"
         mc:Ignorable="d"
-        Title="GameWindow" Height="450" Width="800">
+        SizeToContent="WidthAndHeight"
+        Title="GameWindow" Height="1000" Width="1000" KeyUp="KeyBoardUp" KeyDown="KeyBoardDown">
     <Grid>
-        <Canvas x:Name="GameScreen" Focusable="True" KeyUp="KeyBoardUp" KeyDown="KeyBoardDown">
+        <ScrollViewer x:Name="CanvasViewer" 
+              HorizontalScrollBarVisibility="Hidden"
+              Focusable="True"
+              VerticalScrollBarVisibility="Hidden">
+            <Canvas x:Name="GameScreen" IsHitTestVisible="False" Background="LightGreen">
+
+                <!--UpperLine -->
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="50" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="150" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="250" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="350" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="450" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="500" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="550" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="600" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="650" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="700" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="750" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="800" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="850" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="900" Canvas.Top="0"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="0"/>
+
+                <!--LowerLine -->
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="50" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="150" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="250" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="350" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="450" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="500" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="550" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="600" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="650" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="700" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="750" Canvas.Top="950"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="800" Canvas.Top="950"/>
+
+                <!--RightLine -->
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="50"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="150"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="250"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="350"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="450"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="550"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="650"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="700"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="800"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="850"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="900"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="950" Canvas.Top="950"/>
+
+                <!--LeftLine -->
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="50"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="150"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="250"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="350"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="450"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="550"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="650"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="700"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="800"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="850"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="900"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="950"/>
+
+                <!--MainMaze -->
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="50"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="50" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="250"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="150" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="250" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="350"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="50" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="150" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="250" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="350" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="250"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="150"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="550"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="150" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="650"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="700"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="50" Canvas.Top="700"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="700"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="250" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="350" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="450" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="450" Canvas.Top="450"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="450" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="450" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="500" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="550" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="600" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="650" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="700" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="750" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="800" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="900" Canvas.Top="300"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="800" Canvas.Top="250"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="800" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="800" Canvas.Top="150"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="800" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="450" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="500" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="500" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="600" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="700" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="550" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="650" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="700" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="750" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="850" Canvas.Top="100"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="850" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="900" Canvas.Top="200"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="900" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="850" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="800" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="750" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="600" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="550" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="500" Canvas.Top="500"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="550" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="650" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="750" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="850" Canvas.Top="400"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="850" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="800" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="750" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="700" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="650" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="600" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="850" Canvas.Top="650"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="850" Canvas.Top="700"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="900" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="850" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="800" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="750" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="700" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="650" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="600" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="550" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="500" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="450" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="350" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="800"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="200" Canvas.Top="850"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="150" Canvas.Top="800"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="800"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="100" Canvas.Top="900"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="750"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="800"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="850"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="900"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="850"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="450" Canvas.Top="850"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="600" Canvas.Top="650"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="600" Canvas.Top="700"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="850" Canvas.Top="850"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="750" Canvas.Top="850"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="650" Canvas.Top="850"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="550" Canvas.Top="850"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="500" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="500" Canvas.Top="650"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="400" Canvas.Top="650"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="600"/>
+                <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="650"/>
+                <Image x:Name="Player" Tag="User" Canvas.Left="51" Canvas.Top="51" Source="Resources/StandBack.png" Height="40" Width="40" />
+            </Canvas>
+        </ScrollViewer>
+       <!-- <Canvas x:Name="GameScreen" Focusable="True" KeyUp="KeyBoardUp" KeyDown="KeyBoardDown">
             <Rectangle Tag="Collide" Fill="Black" Height="419" Width="26" Canvas.Top="0" Canvas.Left="0"/>
             <Rectangle Tag="Collide" Fill="Black" Height="25" Width="680" Canvas.Left="112" Canvas.Top="0"/>
             <Rectangle Tag="Collide" Fill="Black" Height="419" Width="25" Canvas.Left="767" Canvas.Top="0"/>
@@ -35,6 +253,6 @@
             <Image Tag="Coin" Height="47" Width="72" Canvas.Left="358" Canvas.Bottom="10" Canvas.Top="336" Source="/Resources/CoinImage.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Image Tag="Coin" Height="47" Width="72" Canvas.Left="695" Canvas.Bottom="10" Canvas.Top="130" Source="/Resources/CoinImage.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Image Tag="Coin" Height="47" Width="72" Canvas.Left="692" Canvas.Bottom="10" Canvas.Top="30" Source="/Resources/CoinImage.png" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        </Canvas>
+        </Canvas> -->
     </Grid>
 </Window>

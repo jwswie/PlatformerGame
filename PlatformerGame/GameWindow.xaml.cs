@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -16,8 +17,9 @@ namespace PlatformerGame
     {
         private DispatcherTimer GameTimer = new DispatcherTimer(); // Таймер
         private bool UpKeyPressed, DownKeyPressed, LeftKeyPressed, RightKeyPressed;
-        private float SpeedX, SpeedY, Friction = 0.88f, Speed = 2;
-
+        private float SpeedX, SpeedY, Friction = 0.88f, Speed = 2f;
+        bool GameEnd = false;
+        #region move player
         private void KeyBoardDown(object sender, KeyEventArgs e) // Клавиша нажата
         {
             switch (e.Key)
@@ -55,12 +57,18 @@ namespace PlatformerGame
                     break;
             }
         }
+        #endregion
 
         public GameWindow()
         {
             InitializeComponent();
-            GameScreen.Focus();
-            GameTimer.Interval = TimeSpan.FromMilliseconds(16);
+            GameScreen.Height = 1000;
+            GameScreen.Width = 1000;
+            CanvasViewer.Height = 500;
+            CanvasViewer.Width = 500;
+            CanvasViewer.Focus();
+            UpdateCamera();
+            GameTimer.Interval = TimeSpan.FromMilliseconds(20);
             GameTimer.Tick += GameTick;
             GameTimer.Start(); // запускаем таймер
         }
@@ -115,13 +123,31 @@ namespace PlatformerGame
             // Устанавливаем новые координаты игрока
             Canvas.SetLeft(Player, playerX);
             Collide("x");
+            Canvas.SetTop(Player, Canvas.GetTop(Player) - SpeedY);
+            Collide("y");
+            UpdateCamera();
+        }
+
+        #region Camera
+        private void UpdateCamera()
+        {
+            // calculate offset of scrollViewer, relative to actual position of the player
+            double offsetX = Canvas.GetLeft(Player) / 1.3;
+            double offsetY = Canvas.GetTop(Player) / 1.3;
+            // move the "camera"
+            CanvasViewer.ScrollToHorizontalOffset(offsetX);
+            CanvasViewer.ScrollToVerticalOffset(offsetY);
             Canvas.SetTop(Player, playerY);
             Collide("y");
         }
+        #endregion
+
+
+        #region Collision
 
         private void Collide(string dir)
         {
-            foreach (var child in GameScreen.Children.OfType<Rectangle>())
+            foreach (var child in GameScreen.Children.OfType<Image>())
             {
                 if ((string)child.Tag == "Collide") // Объекты типа Collide(Колизия) 
                 {
@@ -158,5 +184,6 @@ namespace PlatformerGame
                 }
             }
         }
+        #endregion
     }
 }
