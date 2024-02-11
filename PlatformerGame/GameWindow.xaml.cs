@@ -1,11 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Windows.Media.Media3D;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace PlatformerGame
@@ -19,6 +18,9 @@ namespace PlatformerGame
         private bool UpKeyPressed, DownKeyPressed, LeftKeyPressed, RightKeyPressed;
         private float SpeedX, SpeedY, Friction = 0.88f, Speed = 2f;
         bool GameEnd = false;
+        private readonly List<Image> _coins;
+        private int _score;
+        private int _collectedCoins;
         #region move player
         private void KeyBoardDown(object sender, KeyEventArgs e) // Клавиша нажата
         {
@@ -62,6 +64,19 @@ namespace PlatformerGame
         public GameWindow()
         {
             InitializeComponent();
+
+            _coins = new List<Image>();
+            _score = 0;
+            _collectedCoins = 0;
+
+            foreach (UIElement element in GameScreen.Children)
+            {
+                if (element is Image && ((Image)element).Tag as string == "Coin")
+                {
+                    _coins.Add((Image)element);
+                }
+            }
+
             GameScreen.Height = 1000;
             GameScreen.Width = 1000;
             CanvasViewer.Height = 500;
@@ -72,7 +87,13 @@ namespace PlatformerGame
             GameTimer.Tick += GameTick;
             GameTimer.Start(); // запускаем таймер
         }
+        private bool CheckCollision(Image coin1, Image coin2)
+        {
+            Rect rect1 = new Rect(Canvas.GetLeft(coin1), Canvas.GetTop(coin1), coin1.Width, coin1.Height);
+            Rect rect2 = new Rect(Canvas.GetLeft(coin2), Canvas.GetTop(coin2), coin2.Width, coin2.Height);
 
+            return rect1.IntersectsWith(rect2);
+        }
         private void GameTick(object sender, EventArgs e) // При каждом тике (кадре)
         {
             // Размеры карты
@@ -111,7 +132,7 @@ namespace PlatformerGame
                 Player.Source = new BitmapImage(new Uri("Resources/StandBack.png", UriKind.Relative));
             }
 
-
+            UpdateGameObjectPosition();
 
             SpeedX *= Friction; // Уменьшаем скорость с учетом трения
             SpeedY *= Friction;
@@ -126,6 +147,31 @@ namespace PlatformerGame
             Canvas.SetTop(Player, Canvas.GetTop(Player) - SpeedY);
             Collide("y");
             UpdateCamera();
+        }
+        private void UpdateGameObjectPosition()
+        {
+            foreach (var coinImage in _coins)
+            {
+                if (CheckCollision(Player, coinImage))
+                {
+                    HandleCollision(coinImage);
+
+                    AddScore(10);
+                    AddCollectedCoin(ref _collectedCoins);
+                }
+            }
+        }
+        private void AddScore(int value)
+        {
+            _score += value;
+        }
+        private void AddCollectedCoin(ref int collectedCoins)
+        {
+            collectedCoins++;
+        }
+        private void HandleCollision(Image coin)
+        {
+            GameScreen.Children.Remove(coin);
         }
 
         #region Camera
@@ -173,9 +219,14 @@ namespace PlatformerGame
                     {
 
                         MessageBox.Show("Finished level");
-                        MainWindow mainWindow = new MainWindow();
+
+                        var statistic = new PlayerStatistic(_score, _collectedCoins);
+
+                        MainWindow mainWindow = new MainWindow(statistic);
                         mainWindow.Show();
+
                         Close();
+
                         GameTimer.Stop();
                         break;
                     }

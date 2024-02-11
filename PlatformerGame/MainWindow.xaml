@@ -77,7 +77,7 @@
                 </TransformGroup>
             </StackPanel.RenderTransform>
             <Button Content="New Game" Style="{StaticResource AnimatedButtonStyle}" Click="StartButton_Click"/>
-            <Button Content="Levels" Style="{StaticResource AnimatedButtonStyle}" Click="LevelsButton_Click"/>
+            <Button Content="Highest Score" Style="{StaticResource AnimatedButtonStyle}" Click="Button_Click"/>
             <Button Content="Quit" Style="{StaticResource AnimatedButtonStyle}" Click="ExitButton_Click"/>
         </StackPanel>
     </Grid>
