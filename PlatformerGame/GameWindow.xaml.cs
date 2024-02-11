@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
@@ -79,43 +73,55 @@ namespace PlatformerGame
             GameTimer.Start(); // запускаем таймер
         }
 
-
-
         private void GameTick(object sender, EventArgs e) // При каждом тике (кадре)
         {
-            // Передвигаемся вверх/вниз/влево/вправо на 2 (значение Speed)
+            // Размеры карты
+            double canvasWidth = GameScreen.ActualWidth;
+            double canvasHeight = GameScreen.ActualHeight;
 
+            // Размер + позиция игрока
+            double playerWidth = Player.Width;
+            double playerHeight = Player.Height;
+            double playerX = Canvas.GetLeft(Player);
+            double playerY = Canvas.GetTop(Player);
+
+            // Передвигаемся вверх/вниз/влево/вправо на 2 (значение Speed)
             if (UpKeyPressed)
             {
                 SpeedY += Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\Desik\\source\\repos\\PlatformerGame\\PlatformerGame\\Resources\\GoFront.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("Resources/GoFront.png", UriKind.Relative));
             }
             else if (DownKeyPressed)
             {
                 SpeedY -= Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\Desik\\source\\repos\\PlatformerGame\\PlatformerGame\\Resources\\GoBack.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("Resources/GoBack.png", UriKind.Relative));
             }
             else if (LeftKeyPressed)
             {
                 SpeedX += Speed;
-
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\Desik\\source\\repos\\PlatformerGame\\PlatformerGame\\Resources\\GoRight.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("Resources/GoRight.png", UriKind.Relative));
             }
             else if (RightKeyPressed)
             {
                 SpeedX -= Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\Desik\\source\\repos\\PlatformerGame\\PlatformerGame\\Resources\\GoLeft.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("Resources/GoLeft.png", UriKind.Relative));
             }
             else
             {
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\Desik\\source\\repos\\PlatformerGame\\PlatformerGame\\Resources\\StandBack.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("Resources/StandBack.png", UriKind.Relative));
             }
 
 
-            SpeedX *= Friction; // Уменьшаем скорость с учетом терния
+
+            SpeedX *= Friction; // Уменьшаем скорость с учетом трения
             SpeedY *= Friction;
 
-            Canvas.SetLeft(Player, Canvas.GetLeft(Player) + SpeedX);
+            // Обновляем позицию игрока
+            playerX += SpeedX;
+            playerY -= SpeedY;
+
+            // Устанавливаем новые координаты игрока
+            Canvas.SetLeft(Player, playerX);
             Collide("x");
             Canvas.SetTop(Player, Canvas.GetTop(Player) - SpeedY);
             Collide("y");
@@ -131,18 +137,25 @@ namespace PlatformerGame
             // move the "camera"
             CanvasViewer.ScrollToHorizontalOffset(offsetX);
             CanvasViewer.ScrollToVerticalOffset(offsetY);
+            Canvas.SetTop(Player, playerY);
+            Collide("y");
         }
         #endregion
 
+
         #region Collision
+
         private void Collide(string dir)
         {
             foreach (var child in GameScreen.Children.OfType<Image>())
             {
                 if ((string)child.Tag == "Collide") // Объекты типа Collide(Колизия) 
                 {
-                    Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height);//Ищем игрока в канвасе
-                    Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height);//Ищем объект в канвасе
+                    Rect PlayerHB = new Rect(Canvas.GetLeft(Player), Canvas.GetTop(Player), Player.Width, Player.Height); //Ищем игрока в канвасе
+                    Rect ToCollide = new Rect(Canvas.GetLeft(child), Canvas.GetTop(child), child.Width, child.Height); //Ищем объект в канвасе
+
+                    string Name = child.Name;
+
                     if (PlayerHB.IntersectsWith(ToCollide)) //Условия контакта с объектом
                     {
                         switch (dir)
@@ -156,6 +169,17 @@ namespace PlatformerGame
                                 SpeedY = 0;
                                 break;
                         }
+                    }
+
+                    if (PlayerHB.IntersectsWith(ToCollide) && Name == "Finish") // Условия контакта с объектом
+                    {
+
+                        MessageBox.Show("Finished level");
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        Close();
+                        GameTimer.Stop();
+                        break;
                     }
                 }
             }
