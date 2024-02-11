@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,8 +16,7 @@ namespace PlatformerGame
         private DispatcherTimer GameTimer = new DispatcherTimer(); // Таймер
         private bool UpKeyPressed, DownKeyPressed, LeftKeyPressed, RightKeyPressed;
         private float SpeedX, SpeedY, Friction = 0.88f, Speed = 2f;
-        bool GameEnd = false;
-        private readonly List<Image> _coins;
+        private bool GameEnd = false;
         private int _score;
         private int _collectedCoins;
         #region move player
@@ -65,17 +63,8 @@ namespace PlatformerGame
         {
             InitializeComponent();
 
-            _coins = new List<Image>();
             _score = 0;
             _collectedCoins = 0;
-
-            foreach (UIElement element in GameScreen.Children)
-            {
-                if (element is Image && ((Image)element).Tag as string == "Coin")
-                {
-                    _coins.Add((Image)element);
-                }
-            }
 
             GameScreen.Height = 1000;
             GameScreen.Width = 1000;
@@ -132,7 +121,7 @@ namespace PlatformerGame
                 Player.Source = new BitmapImage(new Uri("Resources/StandBack.png", UriKind.Relative));
             }
 
-            UpdateGameObjectPosition();
+            HandleCoinCollisions();
 
             SpeedX *= Friction; // Уменьшаем скорость с учетом трения
             SpeedY *= Friction;
@@ -148,18 +137,10 @@ namespace PlatformerGame
             Collide("y");
             UpdateCamera();
         }
-        private void UpdateGameObjectPosition()
-        {
-            foreach (var coinImage in _coins)
-            {
-                if (CheckCollision(Player, coinImage))
-                {
-                    HandleCollision(coinImage);
 
-                    AddScore(10);
-                    AddCollectedCoin(ref _collectedCoins);
-                }
-            }
+        private void Coins_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
         private void AddScore(int value)
         {
@@ -234,5 +215,24 @@ namespace PlatformerGame
             }
         }
         #endregion
+        private void HandleCoinCollisions()
+        {
+            foreach (Image element in GameScreen.Children.OfType<Image>().ToList())
+            {
+                string tag = (string)element.Tag;
+
+                if (tag == "Coin")
+                {
+                    Image coin = element;
+
+                    if (CheckCollision(Player, coin))
+                    {
+                        HandleCollision(coin);
+                        AddScore(10);
+                        AddCollectedCoin(ref _collectedCoins);
+                    }
+                }
+            }
+        }
     }
 }

@@ -12,8 +12,9 @@
               HorizontalScrollBarVisibility="Hidden"
               Focusable="True"
               VerticalScrollBarVisibility="Hidden">
-            <Canvas x:Name="GameScreen" IsHitTestVisible="False" Background="LightGreen">
+            <Canvas x:Name="GameScreen" IsHitTestVisible="False" Background="LightGreen" MouseUp="Coins_MouseUp">
 
+                <Image x:Name="Finish" Tag="Collide" Height="4" Width="100" Canvas.Left="850" Canvas.Top="996"/>
                 <!--UpperLine -->
                 <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="0" Canvas.Top="0"/>
                 <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="50" Canvas.Top="0"/>
@@ -224,17 +225,17 @@
                 <Image Tag="Collide" Source="Resources/brick.png"  Height="50" Width="50" Canvas.Left="300" Canvas.Top="650"/>
                 <Image x:Name="Player" Tag="User" Canvas.Left="51" Canvas.Top="51" Source="Resources/StandBack.png" Height="40" Width="40" />
                 
-                <Image Tag="Coin" Canvas.Left="154" Canvas.Top="55" Source="Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <Image Tag="Coin" Canvas.Left="858" Canvas.Top="153" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <Image Tag="Coin" Canvas.Left="500" Canvas.Top="259" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <Image Tag="Coin" Canvas.Left="58" Canvas.Top="265" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <Image Tag="Coin" Canvas.Left="400" Canvas.Top="453" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <Image Tag="Coin" Canvas.Left="903" Canvas.Top="259" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <Image Tag="Coin" Canvas.Left="350" Canvas.Top="623" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <Image Tag="Coin" Canvas.Left="903" Canvas.Top="709" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <Image Tag="Coin" Canvas.Left="455" Canvas.Top="915" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <Image Tag="Coin" Canvas.Left="805" Canvas.Top="409" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <Image Tag="Coin" Canvas.Left="905" Canvas.Top="848" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <Image Tag="Coin" Canvas.Left="154" Canvas.Top="55" Source="Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
+                <Image Tag="Coin" Canvas.Left="858" Canvas.Top="153" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
+                <Image Tag="Coin" Canvas.Left="500" Canvas.Top="259" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
+                <Image Tag="Coin" Canvas.Left="58" Canvas.Top="265" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
+                <Image Tag="Coin" Canvas.Left="400" Canvas.Top="453" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
+                <Image Tag="Coin" Canvas.Left="903" Canvas.Top="259" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
+                <Image Tag="Coin" Canvas.Left="350" Canvas.Top="623" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
+                <Image Tag="Coin" Canvas.Left="903" Canvas.Top="709" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
+                <Image Tag="Coin" Canvas.Left="455" Canvas.Top="915" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
+                <Image Tag="Coin" Canvas.Left="805" Canvas.Top="409" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
+                <Image Tag="Coin" Canvas.Left="905" Canvas.Top="848" Source="/Resources/CoinImage.png" Height="32" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" MouseUp="Coins_MouseUp"/>
 
 
             </Canvas>
