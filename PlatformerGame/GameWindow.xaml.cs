@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
@@ -70,7 +64,7 @@ namespace PlatformerGame
             GameTimer.Tick += GameTick;
             GameTimer.Start(); // запускаем таймер
         }
-        
+
         private void GameTick(object sender, EventArgs e) // При каждом тике (кадре)
         {
             // Размеры карты
@@ -87,29 +81,31 @@ namespace PlatformerGame
             if (UpKeyPressed)
             {
                 SpeedY += Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoFront.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("Resources/GoFront.png", UriKind.Relative));
             }
             else if (DownKeyPressed)
             {
                 SpeedY -= Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoBack.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("Resources/GoBack.png", UriKind.Relative));
             }
             else if (LeftKeyPressed)
             {
                 SpeedX += Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoRight.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("Resources/GoRight.png", UriKind.Relative));
             }
             else if (RightKeyPressed)
             {
                 SpeedX -= Speed;
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\GoLeft.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("Resources/GoLeft.png", UriKind.Relative));
             }
             else
             {
-                Player.Source = new BitmapImage(new Uri("C:\\Users\\pktb\\source\\repos\\PlatformerGame\\PlatformerGame\\StandBack.png", UriKind.Absolute));
+                Player.Source = new BitmapImage(new Uri("Resources/StandBack.png", UriKind.Relative));
             }
 
-            SpeedX *= Friction; // Уменьшаем скорость с учетом терния
+
+
+            SpeedX *= Friction; // Уменьшаем скорость с учетом трения
             SpeedY *= Friction;
 
             // Обновляем позицию игрока
@@ -123,9 +119,9 @@ namespace PlatformerGame
             Collide("y");
         }
 
-        private void Collide(string dir) 
+        private void Collide(string dir)
         {
-            foreach (var child in GameScreen.Children.OfType<Rectangle>()) 
+            foreach (var child in GameScreen.Children.OfType<Rectangle>())
             {
                 if ((string)child.Tag == "Collide") // Объекты типа Collide(Колизия) 
                 {
@@ -136,7 +132,7 @@ namespace PlatformerGame
 
                     if (PlayerHB.IntersectsWith(ToCollide)) //Условия контакта с объектом
                     {
-                        switch (dir) 
+                        switch (dir)
                         {
                             case "x":
                                 Canvas.SetLeft(Player, Canvas.GetLeft(Player) - SpeedX);
@@ -151,7 +147,7 @@ namespace PlatformerGame
 
                     if (PlayerHB.IntersectsWith(ToCollide) && Name == "Finish") // Условия контакта с объектом
                     {
-                        
+
                         MessageBox.Show("Finished level");
                         MainWindow mainWindow = new MainWindow();
                         mainWindow.Show();
